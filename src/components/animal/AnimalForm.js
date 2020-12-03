@@ -1,13 +1,11 @@
 import React, { useContext, useRef, useEffect } from "react"
-import { EmployeeContext } from "./EmployeeProvider"
-import { LocationContext } from "../location/LocationProvider"
 import { AnimalContext } from "../animal/AnimalProvider"
-import "./Employee.css"
+import { LocationContext } from "../location/LocationProvider"
+import "./Animal.css"
 
-export const EmployeeForm = (props) => {
-    const { addEmployee } = useContext(EmployeeContext)
+export const AnimalForm = (props) => {
+    const { animal, getAnimals, addAnimal } = useContext(AnimalContext)
     const { locations, getLocations } = useContext(LocationContext)
-    const { animals, getAnimals } = useContext(AnimalContext)
 
     /*
         Create references that can be attached to the input
@@ -19,7 +17,7 @@ export const EmployeeForm = (props) => {
     */
     const name = useRef(null)
     const location = useRef(null)
-    const animal = useRef(null)
+    const breed = useRef(null)
 
     /*
         Get animal state and location state on initialization.
@@ -28,7 +26,7 @@ export const EmployeeForm = (props) => {
        getAnimals().then(getLocations)
     }, [])
 
-    const constructNewEmployee = () => {
+    const constructNewAnimal = () => {
         /*
             The `location` and `animal` variables below are
             the references attached to the input fields. You
@@ -36,50 +34,43 @@ export const EmployeeForm = (props) => {
             but rather `.current.value` now in React.
         */
         const locationId = parseInt(location.current.value)
-        const animalId = parseInt(animal.current.name)
 
         if (locationId === 0) {
             window.alert("Please select a location")
         } else {
-            addEmployee({
+            addAnimal({
                 name: name.current.value,
+                breed: breed.current.value,
                 locationId,
-                animalId
+                customerId: parseInt(localStorage.getItem("kennel_customer"))
             })
-            .then(() => props.history.push("/employees"))
+            .then(() => props.history.push("/animals"))
         }
     }
 
     return (
-        <form className="employeeForm">
-            <h2 className="employeeForm__title">New Employee</h2>
+        <form className="animalForm">
+            <h2 className="animalForm__title">Admit Animal</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="employeeName">Employee name: </label>
-                    <input type="text" id="employeeName" ref={name} required autoFocus className="form-control" placeholder="Employee name" />
+                    <label htmlFor="animalName">Animal name: </label>
+                    <input type="text" id="animalName" ref={name} required autoFocus className="form-control" placeholder="Animal name" />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="animalBreed">Animal Breed: </label>
+                    <input type="text" id="animalBreed" ref={breed} required autoFocus className="form-control" placeholder=" Breed" />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="location">Assign to location: </label>
-                    <select defaultValue="" name="location" ref={location} id="employeeLocation" className="form-control" >
+                    <select defaultValue="" name="location" ref={location} id="animalLocation" className="form-control" >
                         <option value="0">Select a location</option>
-                        {locations.map(e => (
-                            <option key={e.id} value={e.id}>
-                                {e.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="location">Caretaker for: </label>
-                    <select defaultValue="" name="animal" ref={animal} id="employeeAnimal" className="form-control" >
-                        <option value="0">Select an animal</option>
-                        {animals.map(e => (
-                            <option key={e.id} value={e.id}>
-                                {e.name}
+                        {locations.map(a => (
+                            <option key={a.id} value={a.id}>
+                                {a.name}
                             </option>
                         ))}
                     </select>
@@ -88,10 +79,10 @@ export const EmployeeForm = (props) => {
             <button type="submit"
                 onClick={evt => {
                     evt.preventDefault() // Prevent browser from submitting the form
-                    constructNewEmployee()
+                    constructNewAnimal()
                 }}
                 className="btn btn-primary">
-                Save Employee
+                Save Animal
             </button>
         </form>
     )
