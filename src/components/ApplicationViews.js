@@ -1,17 +1,18 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { LocationProvider } from "./location/LocationProvider"
 import { AnimalProvider } from "./animal/AnimalProvider"
+import { AnimalList } from "./animal/AnimalList"
+import { AnimalForm } from "./animal/AnimalForm"
+import { AnimalDetails } from "./animal/AnimalDetail"
+import { CustomersList } from "./customer/CustomerList"
 import { CustomerProvider } from "./customer/CustomerProvider"
-import { EmployeeProvider } from "./employee/EmployeeProvider"
+import { LocationProvider } from "./location/LocationProvider"
 import { LocationList } from "./location/LocationList"
 import { LocationDetail } from "./location/LocationDetail"
-import { AnimalList } from "./animal/AnimalList"
-import { CustomersList } from "./customer/CustomerList"
+import { EmployeeProvider } from "./employee/EmployeeProvider"
 import { EmployeeList } from "./employee/EmployeeList"
 import { EmployeeForm } from "./employee/EmployeeForm"
 import { EmployeeDetail } from "./employee/EmployeeDetail"
-import { AnimalForm } from "./animal/AnimalForm"
 
 export const ApplicationViews = (props) => {
     return (
@@ -45,6 +46,11 @@ export const ApplicationViews = (props) => {
                             <Route exact path="/animals/create" render={
                                     props => <AnimalForm {...props} />
                                     } />
+                    <AnimalProvider>
+                            <Route path="/animals/:animalId(\d+)" render={
+                                props => <AnimalDetails {...props} />
+                                } />
+                    </AnimalProvider>
                 </CustomerProvider>
     </LocationProvider>
 </AnimalProvider>
