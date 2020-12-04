@@ -17,8 +17,14 @@ export const AnimalDetails = (props) => {
         <section className="animal">
             <h3 className="animal__name">{animal.name}</h3>
             <div className="animal__breed">{animal.breed}</div>
+            <div className="animal__treatment">Treatment: {animal.treatment}</div>
             <div className="animal__location">Location: {animal.location.name}</div>
             <div className="animal__owner">Customer: {animal.customer.name}</div>
+
+            <button onClick={() => {
+          props.history.push(`/animals/edit/${animal.id}`)
+        }}>Edit</button>
+
             <button className="btn--release"
           onClick={() => {
             // Code to delete animal from database
@@ -27,9 +33,6 @@ export const AnimalDetails = (props) => {
               .then(() => props.history.push("/animals"))
           }}
         >Release</button>
-            <button onClick={() => {
-                props.history.push(`/animals/edit/${animal.id}`)
-            }}>Edit</button>
         </section>
     )
 }
