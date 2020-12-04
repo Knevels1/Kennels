@@ -4,29 +4,33 @@
       "id": 2,
       "name": "Dorithy",
       "breed": "zombodie",
-      "customerId": 1,
-      "locationId": 1
+      "locationId": 1,
+      "treatment": "Lots of love",
+      "customerId": 1
     },
     {
       "id": 3,
       "name": "Mauligan",
       "breed": "builtDifferent",
       "customerId": 1,
-      "locationId": 2
+      "locationId": 2,
+      "treatment": "shots"
     },
     {
       "name": "Muligan",
       "breed": "shnizel",
       "locationId": 2,
       "customerId": 1,
-      "id": 4
+      "id": 4,
+      "treatment": "daycare"
     },
     {
       "name": "scruffy",
       "breed": "armanien",
       "locationId": 1,
       "customerId": 1,
-      "id": 5
+      "id": 5,
+      "treatment": "nail clipped"
     }
   ],
   "customers": [
@@ -43,6 +47,12 @@
       "locationId": 2,
       "animalId": 3,
       "id": 5
+    },
+    {
+      "name": "Jonathens",
+      "locationId": 1,
+      "animalId": null,
+      "id": 6
     }
   ],
   "locations": [
