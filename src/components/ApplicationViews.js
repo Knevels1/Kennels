@@ -4,6 +4,7 @@ import { AnimalProvider } from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
 import { AnimalForm } from "./animal/AnimalForm"
 import { AnimalDetails } from "./animal/AnimalDetail"
+import { AnimalSearch } from "./animal/AnimalSearch"
 import { CustomersList } from "./customer/CustomerList"
 import { CustomerProvider } from "./customer/CustomerProvider"
 import { LocationProvider } from "./location/LocationProvider"
@@ -40,8 +41,11 @@ export const ApplicationViews = (props) => {
         <CustomerProvider>
                 {/* Render the animal list when http://localhost:3000/animals */}
                 <Route exact path="/animals" render={
-                                    props => <AnimalList {...props} />
-                                    } />
+                                    props => <>
+                                        <AnimalSearch />
+                                        <AnimalList {...props} />
+                                    </>
+                                } />
 
                             <Route exact path="/animals/create" render={
                                     props => <AnimalForm {...props} />
