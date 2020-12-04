@@ -1,13 +1,6 @@
 {
   "animals": [
     {
-      "id": 1,
-      "name": "Doodles",
-      "breed": "Poodle",
-      "customerId": 1,
-      "locationId": 2
-    },
-    {
       "id": 2,
       "name": "Dorithy",
       "breed": "zombodie",
@@ -50,12 +43,6 @@
       "locationId": 2,
       "animalId": 3,
       "id": 5
-    },
-    {
-      "name": "Jonathens",
-      "locationId": 1,
-      "animalId": 1,
-      "id": 6
     }
   ],
   "locations": [
