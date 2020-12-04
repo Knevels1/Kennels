@@ -46,28 +46,8 @@
   ],
   "employees": [
     {
-      "id": 1,
-      "name": "Jeremy Bakker",
-      "locationId": 2
-    },
-    {
-      "id": 2,
-      "name": "Joseph Linger",
-      "locationId": 1
-    },
-    {
-      "id": 3,
-      "name": "Chris Kyle",
-      "locationId": 2
-    },
-    {
-      "id": 4,
-      "name": "Doffy mcgee",
-      "locationId": 1
-    },
-    {
       "name": "Jonathen",
-      "locationId": 1,
+      "locationId": 2,
       "animalId": 3,
       "id": 5
     },

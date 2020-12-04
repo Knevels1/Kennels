@@ -11,13 +11,13 @@ export const EmployeeContext = React.createContext()
  */
 export const EmployeeProvider = (props) => {
 
-  const [employees, setEmployees] = useState([]) 
+  const [employees, setEmployee] = useState([]) 
   // useState returns [initial value of state variable, a function to set the value of the state variable]
 
   const getEmployees = () => {
     return fetch("http://localhost:8088/employees")
       .then(res => res.json())
-      .then(setEmployees)
+      .then(setEmployee)
       // .then(parsedLocations => setLocations(parsedLocations))
   }
 
